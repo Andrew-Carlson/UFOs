@@ -1,67 +1,66 @@
-// import the data from data.js
+// from data.js
 const tableData = data;
-console.log(tableData); // Prints to console in devtools
 
-// Reference the HTML table using d3 library
-// D3 is a JavaScript library that produces sophisticated and highly dynamic graphics in an HTML webpage
-// tbody is the html tag that will contain the table of data
-var tbody = d3.select("tbody")
+// get table references
+var tbody = d3.select("tbody");
 
 function buildTable(data) {
-    // First, clear out any existing data
-    tbody.html("")
+  // First, clear out any existing data
+  tbody.html("");
 
-    // Next, loop through each object in the data
-    // and append a row and cells for each value in the row
-    data.forEach((dataRow) => { // dataRow is the parameter to be called when function is used
+  // Next, loop through each object in the data
+  // and append a row and cells for each value in the row
+  data.forEach((dataRow) => {
+    // Append a row to the table body
+    let row = tbody.append("tr");
 
-        // Append a row to the table body
-        let row = tbody.append("tr");
-
-    // Object.values:reference one object from the array of UFO sightings.
-    // By adding (dataRow) as the argument, add values to go into the dataRow. 
-    // We've added forEach((val) to specify that we want one object per row.
-        Object.values(dataRow).forEach((val) => {
-
-            let cell = row.append("td")
-
-            //.text(value): extracting only the text of the value.
-            cell.text(val)
-            }
-        );    
+    // Loop through each field in the dataRow and add
+    // each value as a table cell (td)
+    Object.values(dataRow).forEach((val) => {
+      let cell = row.append("td");
+      cell.text(val);
     });
-};
+  });
+}
 
-// create function to filter table data
-function handleClick() {
+// 1. Create a variable to keep track of all the filters as an object.
 
-    // D3.js selects first element that matches selector string (HTML id): "datetime". 
-    // The selector string is the HTML item we're telling D3.js to look for.
-    let date = d3.select("#datetime").property("value"); // .property("value"): grabs selected info and puts in "date" variable
 
-    // By setting the filteredData variable to our raw data, we're basically using it as a blank slate.
-    let filteredData = tableData;
+// 3. Use this function to update the filters. 
+function updateFilters() {
 
-    // Check to see if a date was entered and filter the
-    // data using that date with if statement
-    // Pseudocode:
-    // if (a date is entered) {
-        // Filter the default data to show only the date entered
-    if (date) {
+    // 4a. Save the element that was changed as a variable.
 
-        // Show only the rows where the date is equal to the date filter we created above
-        filteredData = filteredData.filter(row => row.datetime === date) // === : strict equality, == : loose equality
-    }
+    // 4b. Save the value that was changed as a variable.
 
-    // if no date was entered, the filteredData table will just be the original tableData
+    // 4c. Save the id of the filter that was changed as a variable.
 
-    // call the handleClick() function to update the table with filtered data
-    buildTable(filteredData);
-};
-
-// link code directly to filter button.
-// .on("click", handleClick);, tells D3 to execute handleClick() function when the button with id=filter-btn is clicked.
-d3.selectAll("#filter-btn").on("click", handleClick); // 'filter-btn' is HTML tag/selector string
-
-// Build the table when the page loads
-buildTable(tableData)
+  
+    // 5. If a filter value was entered then add that filterId and value
+    // to the filters list. Otherwise, clear that filter from the filters object.
+ 
+  
+    // 6. Call function to apply all filters and rebuild the table
+    filterTable();
+  
+  }
+  
+  // 7. Use this function to filter the table when data is entered.
+  function filterTable() {
+  
+    // 8. Set the filtered data to the tableData.
+    
+  
+    // 9. Loop through all of the filters and keep any data that
+    // matches the filter values
+    
+  
+    // 10. Finally, rebuild the table using the filtered data
+    
+  }
+  
+  // 2. Attach an event to listen for changes to each filter
+  
+  
+  // Build the table when the page loads
+  buildTable(tableData);

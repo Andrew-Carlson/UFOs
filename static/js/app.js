@@ -1,5 +1,6 @@
 // import the data from data.js
 const tableData = data;
+console.log(tableData); // Prints to console in devtools
 
 // Reference the HTML table using d3 library
 // D3 is a JavaScript library that produces sophisticated and highly dynamic graphics in an HTML webpage
@@ -60,7 +61,7 @@ function handleClick() {
 
 // link code directly to filter button.
 // .on("click", handleClick);, tells D3 to execute handleClick() function when the button with id=filter-btn is clicked.
-d3.selectALL("#filter-btn").on("click", handleClick); // 'filter-btn' is HTML tag/selector string
+d3.selectAll("#filter-btn").on("click", handleClick); // 'filter-btn' is HTML tag/selector string
 
 // Build the table when the page loads
 buildTable(tableData)

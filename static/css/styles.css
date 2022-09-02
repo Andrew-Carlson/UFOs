@@ -8,6 +8,13 @@ background-size: 100% 100%;
 text-align: center;
 }
 
+/* align text in column for li tag */
 li {
-    text-align: center;
+  text-align: center;
+}
+
+/* center input box in column */
+input{
+margin: auto;
+display: block;
 }
